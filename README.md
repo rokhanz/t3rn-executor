@@ -1,4 +1,3 @@
-```
 # T3RN Executor
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -63,43 +62,49 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
-
+```
 Ubuntu/Debian
 sudo apt update && sudo apt install -y curl tar screen bc netcat-openbsd xxd
-
+```
+```
 Optional dependencies for wallet address derivation
 Option 1: Foundry (Recommended)
 curl -L https://foundry.paradigm.xyz | bash
 source ~/.bashrc && foundryup
-
+```
+```
 Option 2: Node.js + ethers
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 npm install -g ethers
-
+```
+```
 Option 3: Python3 + web3
 sudo apt install -y python3 python3-pip
 pip3 install web3 eth-account
 
-```
 
 ### Installation
 
 Clone the repository
+```
 git clone https://github.com/rokhanz/t3rn-executor.git
 cd t3rn-executor
-
-Make scripts executable
-chmod +x .sh modules/.sh
-
-Copy environment template
-cp .env.example .env
-
-Edit configuration
-nano .env
-
 ```
-
+Make scripts executable
+```
+chmod +x .sh modules/.sh
+```
+Copy environment template
+```
+cp .env.example .env
+```
+```
+Edit configuration
+```
+nano .env
+```
+```
 ### Configuration
 
 Edit `.env` file with your settings:
@@ -120,10 +125,11 @@ ENABLED_NETWORKS="arbitrum-sepolia,base-sepolia,blast-sepolia,optimism-sepolia"
 ```
 
 ### Running
-
+```
+```
 Quick start (recommended)
 ./autorun.sh
-
+```
 Run in specific mode
 ./autorun.sh -m screen # Screen session (default)
 ./autorun.sh -m direct # Direct execution
@@ -139,7 +145,7 @@ Validation and checks
 ## 📖 Usage Guide
 
 ### Basic Commands
-
+```
 Start executor
 ./autorun.sh
 
@@ -158,7 +164,7 @@ pkill -f executor
 ```
 
 ### Advanced Usage
-
+```
 Run with custom settings
 EXECUTION_MODE=background ./autorun.sh
 
@@ -174,7 +180,7 @@ Run without monitoring services
 ```
 
 ### Screen Session Management
-
+```
 List all screen sessions
 screen -list
 
@@ -206,7 +212,7 @@ screen -S t3rn-executor -X quit
 | `ENABLE_ANTI_MEV` | Enable MEV protection | true |
 
 ### Network-Specific Settings
-
+```
 Balance thresholds per network
 BALANCE_THRESHOLD_ARBT="0.3" # Arbitrum Sepolia
 BALANCE_THRESHOLD_BAST="0.3" # Base Sepolia
@@ -221,7 +227,7 @@ RPC_BAST_OVERRIDE="https://custom-base-rpc.com"
 ```
 
 ### Proxy Configuration
-
+```
 Enable proxy usage
 USE_PROXY=true
 PROXY_FILE="proxies.txt"
@@ -323,8 +329,8 @@ chmod 600 .env
 ```
 
 ### Debug Mode
-```
 Enable debug logging
+```
 export ENABLE_DEBUG_MODE=true
 export LOG_LEVEL=debug
 ./autorun.sh
@@ -334,11 +340,11 @@ export LOG_LEVEL=debug
 Run comprehensive health check
 ```
 ./autorun.sh -c
-
+```
 Check specific components
+```
 ./modules/validation.sh
 ./modules/dependency_checker.sh
-
 ```
 ```
 ## 📁 Project Structure
@@ -392,12 +398,12 @@ Clone for development
 git clone https://github.com/rokhanz/t3rn-executor.git
 cd t3rn-executor
 ```
-```
 Install development dependencies
+```
 ./modules/dependency_checker.sh --install-all
 ```
-```
 Run tests
+```
 ./autorun.sh --dry-run
 ```
 
