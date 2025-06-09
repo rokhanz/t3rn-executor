@@ -259,7 +259,6 @@ Thanks to the brave souls who will test this executor in 2025 and provide feedba
 - ⭐ **Star:** Show your support!
 
 ---
----
 
 **⭐ Star this repository if you find it useful!**
 
