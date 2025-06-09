@@ -105,10 +105,9 @@ nano .env
 ```
 
 ### Configuration
-```
 Edit `.env` file with your settings:
-
 Essential Configuration
+```
 PRIVATE_KEY_EXECUTOR="your_private_key_without_0x_prefix"
 ALCHEMY_KEY_1="your_first_alchemy_api_key"
 ALCHEMY_KEY_2="your_second_alchemy_api_key"
@@ -122,58 +121,63 @@ Network Selection
 ENABLED_NETWORKS="arbitrum-sepolia,base-sepolia,blast-sepolia,optimism-sepolia"
 ```
 ### Running
-
 Quick start (recommended)
 ```
 ./autorun.sh
 ```
 Run in specific mode
+```
 ./autorun.sh -m screen # Screen session (default)
 ./autorun.sh -m direct # Direct execution
 ./autorun.sh -m background # Background daemon
-
+```
 Validation and checks
+```
 ./autorun.sh -c # Run checks only
 ./autorun.sh -v # Validate configuration
 ./autorun.sh -s # Show status
-
 ```
 
 ## 📖 Usage Guide
 
 ### Basic Commands
-```
 Start executor
+```
 ./autorun.sh
-
+```
 Check status
+```
 ./autorun.sh -s
-
+```
 Attach to screen session
+```
 screen -r t3rn-executor
-
+```
 View logs
+```
 tail -f logs/executor.log
-
+```
 Stop executor
+```
 pkill -f executor
-
 ```
 
 ### Advanced Usage
-```
 Run with custom settings
+```
 EXECUTION_MODE=background ./autorun.sh
-
+```
 Skip pre-execution checks
+```
 ./autorun.sh --no-checks
-
+```
 Force execution despite warnings
+```
 ./autorun.sh --force
-
+```
 Run without monitoring services
+```
 ./autorun.sh --no-monitoring
-
 ```
 
 ### Screen Session Management
@@ -189,7 +193,6 @@ Ctrl+A, then D
 
 Kill session
 screen -S t3rn-executor -X quit
-
 ```
 
 ## 🔧 Configuration
@@ -223,8 +226,8 @@ RPC_BAST_OVERRIDE="https://custom-base-rpc.com"
 ```
 
 ### Proxy Configuration
-```
 Enable proxy usage
+```
 USE_PROXY=true
 PROXY_FILE="proxies.txt"
 PROXY_FAILOVER_MODE=true
@@ -233,7 +236,6 @@ PROXY_ROTATION_INTERVAL=3600
 Create proxies.txt file
 echo "http://user:pass@proxy1.com:8080" > proxies.txt
 echo "socks5://user:pass@proxy2.com:1080" >> proxies.txt
-
 ```
 
 ## 📊 Monitoring
