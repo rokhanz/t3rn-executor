@@ -1,439 +1,270 @@
-# T3RN Executor
+# 🚀 T3RN Executor Pro
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/rokhanz/t3rn-executor)
-[![Shell Script](https://img.shields.io/badge/shell-bash-green.svg)](https://www.gnu.org/software/bash/)
-[![Node.js](https://img.shields.io/badge/node.js-18+-brightgreen.svg)](https://nodejs.org/)
+[![Bash](https://img.shields.io/badge/shell-bash-brightgreen.svg)](https://www.gnu.org/software/bash/)
+[![Node.js](https://img.shields.io/badge/node.js-18+-orange.svg)](https://nodejs.org/)
 
-> **Advanced T3RN Executor with comprehensive monitoring, MEV protection, and automated management**
+> **✨ Advanced T3RN Executor with MEV protection, rich Telegram notifications, and intelligent automation**
 
-**Author:** Rokhanz  
-**License:** MIT  
-**Version:** 1.0.0
+**👨‍💻 Author:** [Rokhanz](https://github.com/rokhanz) | **📅 Year:** 2025 | **📜 License:** MIT
 
-## 🌟 Features
+---
 
-### 🚀 Core Features
-- **Multi-Network Support** - 12 supported networks with automatic failover
-- **Alchemy Integration** - Multiple API key support with load balancing
-- **Rich Telegram Notifications** - Detailed transaction reports with wallet info
-- **MEV Protection** - Advanced MEV detection and protection mechanisms
-- **Auto-Restart** - Intelligent restart with configurable attempts
-- **Comprehensive Monitoring** - Real-time system and network monitoring
+## 🌟 Why This Repository?
 
-### 🛡️ Security Features
-- **Wallet Security** - Secure private key handling and validation
-- **Anti-MEV Protection** - Sandwich attack and frontrunning protection
-- **Proxy Support** - SOCKS5/HTTP proxy with rotation and failover
-- **Transaction Simulation** - Pre-execution validation
-- **Rate Limiting** - Built-in request throttling
+**Tahun 2025** - T3RN ecosystem berkembang pesat, dan executor standar sudah tidak cukup. Repository ini hadir dengan:
 
-### 📊 Monitoring & Reporting
-- **Real-time Dashboard** - Live progress bars and status updates
-- **Balance Monitoring** - Multi-network balance tracking
-- **Performance Metrics** - CPU, memory, and network statistics
-- **Log Management** - Automatic log rotation and archival
-- **Health Checks** - Continuous system health monitoring
+- 🛡️ **MEV Protection** - Lindungi transaksi dari sandwich attacks
+- 📱 **Rich Telegram Notifications** - Laporan detail dengan wallet address
+- 🌐 **12 Networks Support** - Semua testnet T3RN dengan auto-failover
+- ⚡ **Alchemy Integration** - Multiple API keys dengan load balancing
+- 🎨 **Beautiful UI** - Progress bars berwarna dan animasi
+- 🔄 **Auto-Restart** - Intelligent restart dengan monitoring
 
-### 🎨 User Experience
-- **Progress Bars** - Colorful, animated progress indicators
-- **Screen Management** - Background execution with screen sessions
-- **Rich CLI** - Interactive command-line interface
-- **Auto-Setup** - Automated dependency installation
-- **Configuration Validation** - Comprehensive config checking
+**Mengapa 2025?** Karena T3RN mainnet sudah dekat, kompetisi semakin ketat, dan tools standar tidak lagi memadai untuk menghadapi MEV bots yang semakin canggih.
 
-## 📋 Supported Networks
+---
+## 🖥️ VPS Requirements
 
-| Network | Code | Emoji | Chain ID | Alchemy Support |
-|---------|------|-------|----------|----------------|
-| Arbitrum Sepolia | `arbt` | 🔵 | 421614 | ✅ |
-| Base Sepolia | `bast` | 🔷 | 84532 | ✅ |
-| Blast Sepolia | `blst` | 💥 | 168587773 | ✅ |
-| Optimism Sepolia | `opst` | 🔴 | 11155420 | ✅ |
-| Unichain Sepolia | `unit` | 🦄 | 1301 | ✅ |
-| Monad Testnet | `mont` | 🌙 | 41454 | ✅ |
-| Sei Testnet | `seit` | ⚡ | 713715 | ✅ |
-| Abstract Testnet | `abst` | 🎨 | 11124 | ✅ |
-| Lisk Sepolia | `lisk` | 🔗 | 4202 | ❌ |
-| Berachain Bepolia | `bera` | 🐻 | 80085 | ✅ |
-| BNB Testnet | `bnb` | 🟡 | 97 | ✅ |
-| L2RN Network | `l2rn` | 🌐 | 42069 | ❌ |
+| Spec | Minimum | Recommended |
+|------|---------|-------------|
+| **RAM** | 4GB | 8GB+ |
+| **CPU** | 2 cores | 4+ cores |
+| **Storage** | 50GB SSD | 100GB+ SSD |
+| **Network** | 100 Mbps | 1 Gbps |
+| **OS** | Ubuntu 20.04+ | Ubuntu 22.04 LTS |
 
-## 🚀 Quick Start
+**💡 Recommended VPS Providers:**
+- **Contabo** - €4.99/month (Best value)
+- **Hetzner** - €4.15/month (EU servers)
+- **DigitalOcean** - $6/month (Global)
+- **Vultr** - $6/month (High performance)
 
-### Prerequisites
-Ubuntu/Debian
+---
+
+## ⚡ Quick Install
+
+### 1️⃣ **VPS Setup** (5 minutes)
 ```
-sudo apt update && sudo apt install -y curl tar screen bc netcat-openbsd xxd
-```
-Optional dependencies for wallet address derivation
-Option 1: Foundry (Recommended)
-```
-curl -L https://foundry.paradigm.xyz | bash
-source ~/.bashrc && foundryup
-```
-Option 2: Node.js + ethers
-```
+#Update system
+sudo apt update && sudo apt upgrade -y
+
+#Install essentials
+sudo apt install -y curl git screen bc netcat-openbsd xxd
+
+#Install Node.js (for MEV detector)
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
-npm install -g ethers
-```
-Option 3: Python3 + web3
-```
-sudo apt install -y python3 python3-pip
-pip3 install web3 eth-account
+
+#Install Foundry (for wallet operations)
+curl -L https://foundry.paradigm.xyz | bash && source ~/.bashrc && foundryup
+
 ```
 
-### Installation
-
-Clone the repository
+### 2️⃣ **Clone & Setup** (2 minutes)
 ```
+#Clone repository
 git clone https://github.com/rokhanz/t3rn-executor.git
 cd t3rn-executor
-```
-Make scripts executable
-```
+
+#Setup permissions
 chmod +x .sh modules/.sh
-```
-Copy environment template
-```
+
+#Install dependencies
+npm install
+
+#Create configuration
 cp .env.example .env
+
 ```
-Edit configuration
+
+### 3️⃣ **Configuration** (3 minutes)
 ```
 nano .env
 ```
-
-### Configuration
-Edit `.env` file with your settings:
-Essential Configuration
+**Essential settings:**
 ```
-PRIVATE_KEY_EXECUTOR="your_private_key_without_0x_prefix"
-ALCHEMY_KEY_1="your_first_alchemy_api_key"
-ALCHEMY_KEY_2="your_second_alchemy_api_key"
-ALCHEMY_KEY_3="your_third_alchemy_api_key"
+#===🔑 Your wallet private key (64 chars, no 0x)
+PRIVATE_KEY_EXECUTOR="your_private_key_here"
 
-Telegram Notifications
+#===⚡ Alchemy API keys (get from alchemy.com)
+ALCHEMY_KEY_1="your_alchemy_key_1"
+ALCHEMY_KEY_2="your_alchemy_key_2"
+ALCHEMY_KEY_3="your_alchemy_key_3"
+
+#===📱 Telegram (create bot with @BotFather)
 TELEGRAM_BOT_TOKEN="your_bot_token"
 TELEGRAM_CHAT_ID="your_chat_id"
 
-Network Selection
+#===🌐 Networks to run
 ENABLED_NETWORKS="arbitrum-sepolia,base-sepolia,blast-sepolia,optimism-sepolia"
 ```
-### Running
-Quick start (recommended)
+
+### 4️⃣ **Launch** (1 command)
 ```
 ./autorun.sh
 ```
-Run in specific mode
+**🎉 Done! Your executor is running with full monitoring.**
+
+---
+
+## 📱 Telegram Notifications
+
+Rich notifications with wallet info:
 ```
-./autorun.sh -m screen # Screen session (default)
-./autorun.sh -m direct # Direct execution
-./autorun.sh -m background # Background daemon
+🎯 BID SUCCESS! 🎯
+
+📋 Order Details:
+🆔 Order ID: 0x1234...abcd
+🌉 Route: 🔵 Arbitrum ➡️ 🔷 Base
+💰 Amount: 0.1 ETH
+🔑 Wallet: 0x1234...5678
+
+⚡ Latency: 45ms
+⏰ Time: 14:30:25
 ```
-Validation and checks
+undefined
 ```
-./autorun.sh -c # Run checks only
-./autorun.sh -v # Validate configuration
-./autorun.sh -s # Show status
+💰 BALANCE REPORT 💰
+
+🔑 Wallet: 0x1234...5678
+
+🔵 Arbitrum: 0.850 ETH
+🔷 Base: 0.750 ETH
+💥 Blast: 1.200 ETH
+🔴 Optimism: 0.650 ETH
+
+💎 Total: 3.450 ETH
+✅ Status: Healthy
+
 ```
 
-## 📖 Usage Guide
+---
 
-### Basic Commands
-Start executor
+## 🌐 Supported Networks
+
+| Network | Code | Status | Alchemy |
+|---------|------|--------|---------|
+| 🔵 Arbitrum Sepolia | `arbt` | ✅ Active | ✅ |
+| 🔷 Base Sepolia | `bast` | ✅ Active | ✅ |
+| 💥 Blast Sepolia | `blst` | ✅ Active | ✅ |
+| 🔴 Optimism Sepolia | `opst` | ✅ Active | ✅ |
+| 🦄 Unichain Sepolia | `unit` | ✅ Active | ✅ |
+| 🌙 Monad Testnet | `mont` | ✅ Active | ✅ |
+| ⚡ Sei Testnet | `seit` | ✅ Active | ✅ |
+| 🎨 Abstract Testnet | `abst` | ✅ Active | ✅ |
+| 🔗 Lisk Sepolia | `lisk` | ✅ Active | ❌ |
+| 🐻 Berachain Bepolia | `bera` | ✅ Active | ✅ |
+| 🟡 BNB Testnet | `bnb` | ✅ Active | ✅ |
+| 🌐 L2RN Network | `l2rn` | ✅ Active | ❌ |
+
+---
+
+## 🛡️ Security Features
+
+- **🥪 Anti-Sandwich** - Detect and prevent sandwich attacks
+- **🏃 Anti-Frontrun** - Dynamic gas pricing protection
+- **🔄 Proxy Support** - SOCKS5/HTTP with rotation
+- **🔐 Wallet Security** - Secure private key handling
+- **🧪 Tx Simulation** - Pre-execution validation
+
+---
+
+## 📊 Management Commands
 ```
-./autorun.sh
-```
-Check status
-```
+#Check status
 ./autorun.sh -s
-```
-Attach to screen session
-```
-screen -r t3rn-executor
-```
-View logs
-```
+
+#View logs
 tail -f logs/executor.log
-```
-Stop executor
-```
-pkill -f executor
-```
 
-### Advanced Usage
-Run with custom settings
-```
-EXECUTION_MODE=background ./autorun.sh
-```
-Skip pre-execution checks
-```
-./autorun.sh --no-checks
-```
-Force execution despite warnings
-```
-./autorun.sh --force
-```
-Run without monitoring services
-```
-./autorun.sh --no-monitoring
-```
-
-### Screen Session Management
-```
-List all screen sessions
-screen -list
-
-Attach to T3RN session
+#Attach to screen
 screen -r t3rn-executor
 
-Detach from session (inside screen)
-Ctrl+A, then D
-
-Kill session
-screen -S t3rn-executor -X quit
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PRIVATE_KEY_EXECUTOR` | Wallet private key (64 chars, no 0x) | Required |
-| `ENABLED_NETWORKS` | Comma-separated network list | All networks |
-| `ALCHEMY_KEY_1-8` | Alchemy API keys for redundancy | Optional |
-| `TELEGRAM_BOT_TOKEN` | Telegram bot token | Optional |
-| `TELEGRAM_CHAT_ID` | Telegram chat ID | Optional |
-| `EXECUTOR_MIN_BALANCE_THRESHOLD_ETH` | Minimum balance threshold | 0.5 |
-| `NOTIFICATION_LEVEL` | Notification verbosity | all_success |
-| `USE_PROXY` | Enable proxy usage | false |
-| `ENABLE_ANTI_MEV` | Enable MEV protection | true |
-
-### Network-Specific Settings
-```
-Balance thresholds per network
-BALANCE_THRESHOLD_ARBT="0.3" # Arbitrum Sepolia
-BALANCE_THRESHOLD_BAST="0.3" # Base Sepolia
-BALANCE_THRESHOLD_BLST="0.5" # Blast Sepolia
-BALANCE_THRESHOLD_OPST="0.3" # Optimism Sepolia
-BALANCE_THRESHOLD_UNIT="0.5" # Unichain Sepolia
-
-RPC overrides (optional)
-RPC_ARBT_OVERRIDE="https://custom-arbitrum-rpc.com"
-RPC_BAST_OVERRIDE="https://custom-base-rpc.com"
-```
-
-### Proxy Configuration
-Enable proxy usage
-```
-USE_PROXY=true
-PROXY_FILE="proxies.txt"
-PROXY_FAILOVER_MODE=true
-PROXY_ROTATION_INTERVAL=3600
-
-Create proxies.txt file
-echo "http://user:pass@proxy1.com:8080" > proxies.txt
-echo "socks5://user:pass@proxy2.com:1080" >> proxies.txt
-```
-
-## 📊 Monitoring
-
-### Real-time Monitoring
-
-The executor provides comprehensive monitoring:
-
-- **System Resources** - CPU, memory, disk usage
-- **Network Health** - RPC connectivity and latency
-- **Balance Tracking** - Multi-network balance monitoring
-- **Transaction Metrics** - Success rates and performance
-- **Error Detection** - Automatic error reporting
-
-### Telegram Notifications
-
-Rich notifications include:
-
-- 🎯 **Bid Success** - Order details with network info
-- ⚡ **Execution Success** - Transaction details and rewards
-- 💎 **Claim Success** - Reward claims with amounts
-- 💰 **Balance Reports** - Periodic balance summaries
-- ⚠️ **Error Alerts** - Critical error notifications
-
-### Log Files
-```
-logs/
-├── executor.log # Main executor logs
-├── autorun.log # Autorun script logs
-├── balance_report.txt # Balance summaries
-├── mev_transactions.json # MEV detection logs
-├── network_stats.json # Network statistics
-└── execution_summary.txt # Final execution report
-```
-
-## 🛡️ Security
-
-### Best Practices
-
-1. **Private Key Security**
-   - Never share your private key
-   - Use hardware wallets when possible
-   - Regularly rotate API keys
-
-2. **Environment Security**
-   - Set proper file permissions (600 for .env)
-   - Use VPN for additional security
-   - Monitor for unauthorized access
-
-3. **Network Security**
-   - Use trusted RPC endpoints
-   - Enable proxy rotation
-   - Monitor for suspicious activity
-
-### MEV Protection
-
-The executor includes advanced MEV protection:
-
-- **Sandwich Attack Detection** - Real-time monitoring
-- **Frontrunning Protection** - Gas price optimization
-- **Slippage Protection** - Configurable tolerance
-- **Private Mempool** - Optional private transaction pools
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-**1. Executor Binary Not Found**
-Download manually
-```
-./modules/downloader.sh latest
-```
-**2. RPC Connection Failed**
-Check network configuration
-```
-./autorun.sh -v
-```
-**3. Low Balance Warning**
-Check balances
-```
-./modules/balance_checker.sh
-```
-**4. Permission Denied**
-Fix permissions
-```
-chmod +x .sh modules/.sh
-chmod 600 .env
-```
-
-### Debug Mode
-Enable debug logging
-```
-export ENABLE_DEBUG_MODE=true
-export LOG_LEVEL=debug
-./autorun.sh
-```
-### Health Checks
-
-Run comprehensive health check
-```
+#Health check
 ./autorun.sh -c
-```
-Check specific components
-```
-./modules/validation.sh
-./modules/dependency_checker.sh
-```
 
-## 📁 Project Structure
-```
-t3rn-executor/
-├── 📄 autorun.sh                    # Main autorun script
-├── 📄 main.sh                       # Core execution script  
-├── 📄 .env.example                  # Configuration template
-├── 📄 proxies.txt                   # Proxy configuration template
-├── 📄 README.md                     # Documentation
-├── 📄 .gitignore                    # Git ignore rules
-├── 📁 modules/                      # Core modules (17 files)
-│   ├── 📄 all_monitor.sh            # Comprehensive monitoring
-│   ├── 📄 anti_mev.sh               # MEV protection
-│   ├── 📄 balance_checker.sh        # Balance monitoring
-│   ├── 📄 dependency_checker.sh     # System dependencies
-│   ├── 📄 downloader.sh             # Binary downloader
-│   ├── 📄 env_loader.sh             # Environment loader
-│   ├── 📄 executor_binary.sh        # Executor management
-│   ├── 📄 log_manager.sh            # Log management
-│   ├── 📄 progress_bar_batch.sh     # Batch progress
-│   ├── 📄 progress_bar_color.sh     # Colorful progress
-│   ├── 📄 progress_multitask.sh     # Multi-task progress
-│   ├── 📄 progress_spinner.sh       # Animated spinners
-│   ├── 📄 proxy_manager.sh          # Proxy management
-│   ├── 📄 rpc_manager.sh            # RPC management
-│   ├── 📄 screen_manager.sh         # Screen sessions
-│   ├── 📄 validation.sh             # Configuration validation
-│   └── 📄 wallet_manager.sh         # Wallet security
-├── 📁 config/                       # Configuration files
-│   ├── 📄 network_code_map.conf     # Network mappings
-│   └── 📄 network_mappings.conf     # Network configuration
-├── 📁 anti_mev/                     # MEV protection
-│   └── 📄 mev_detector.js           # MEV detection service
-└── 📁 logs/                         # Log files (auto-created)
-    └── 📄 .gitkeep                  # Keep directory in git
+#Balance check
+./modules/balance_checker.sh
 
 ```
 
-## 🤝 Contributing
+---
 
-Contributions are welcome! Please follow these guidelines:
+## 🔧 Advanced Features
 
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
+### 🔄 **Auto-Restart**
+- Intelligent restart on failures
+- Configurable retry attempts
+- Health monitoring
 
-### Development Setup
-Clone for development
-```
-git clone https://github.com/rokhanz/t3rn-executor.git
-cd t3rn-executor
-```
-Install development dependencies
-```
-./modules/dependency_checker.sh --install-all
-```
-Run tests
-```
-./autorun.sh --dry-run
-```
+### 📊 **Rich Monitoring**
+- Real-time progress bars
+- System resource tracking
+- Network latency monitoring
 
-## 🙏 Acknowledgments
+### 🎨 **Beautiful UI**
+- Colorful progress indicators
+- Emoji-rich logging
+- Animated spinners
 
-- **T3RN Team** - For the amazing T3RN protocol
-- **Alchemy** - For reliable RPC infrastructure
-- **Community Contributors** - For testing and feedback
+### 🌐 **Multi-Network**
+- 12 testnet networks
+- Automatic failover
+- Load balancing
+
+---
+
+## 🚀 Why Choose This Executor?
+
+| Feature | Standard Executor | This Repository |
+|---------|-------------------|-----------------|
+| Networks | 4-5 basic | 12 with failover |
+| Notifications | None | Rich Telegram |
+| MEV Protection | None | Advanced |
+| UI/UX | Basic logs | Colorful progress |
+| Monitoring | None | Comprehensive |
+| Auto-restart | Manual | Intelligent |
+| Documentation | Minimal | Complete |
+
+---
+
+## 🤝 Special Thanks
+
+### 🏗️ **T3RN Team**
+Terima kasih kepada tim T3RN yang telah membangun protokol revolusioner untuk cross-chain interoperability. Tanpa visi dan kerja keras mereka, executor ini tidak akan ada.
+
+### ⚡ **Alchemy**
+Appreciation to Alchemy for providing reliable and fast RPC infrastructure that makes multi-network execution possible with minimal latency.
+
+### 🤖 **Telegram**
+Thanks to Telegram for the excellent Bot API that enables rich, real-time notifications with beautiful formatting and instant delivery.
+
+### 🔧 **Foundry Team**
+Gratitude to the Foundry team for creating powerful blockchain development tools that make wallet operations and address derivation seamless.
+
+### 🌐 **Open Source Community**
+Special recognition to the countless developers who created the tools, libraries, and frameworks that make this project possible.
+
+### 💎 **Early Adopters**
+Thanks to the brave souls who will test this executor in 2025 and provide feedback to make it even better for the T3RN mainnet launch.
+
+---
 
 ## 📞 Support
 
-- **GitHub Issues** - [Report bugs or request features](https://github.com/rokhanz/t3rn-executor/issues)
-- **Documentation** - [Wiki](https://github.com/rokhanz/t3rn-executor/wiki)
-- **Community** - [Discussions](https://github.com/rokhanz/t3rn-executor/discussions)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/rokhanz/t3rn-executor/issues)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/rokhanz/t3rn-executor/discussions)
+- ⭐ **Star:** Show your support!
 
-## 🔄 Changelog
-
-### v1.0.0 (Latest)
-- ✅ Initial release
-- ✅ Multi-network support (12 networks)
-- ✅ Alchemy integration with failover
-- ✅ Rich Telegram notifications
-- ✅ MEV protection and detection
-- ✅ Comprehensive monitoring
-- ✅ Auto-restart functionality
-- ✅ Proxy support with rotation
-- ✅ Wallet security features
-- ✅ Progress bars and UI enhancements
-
+---
 ---
 
 **⭐ Star this repository if you find it useful!**
 
-**🚀 Happy Trading with T3RN Executor!**
+**🚀 Ready for T3RN Mainnet 2025!**
+
+---
+
+*Built with ❤️ for the T3RN community | Last updated: June 2025*
