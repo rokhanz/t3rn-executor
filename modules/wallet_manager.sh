@@ -6,6 +6,13 @@ set -euo pipefail
 # ║                  (Wallet Management & Security)             ║
 # ╚══════════════════════════════════════════════════════════════╝
 
+# T3RN Executor Wallet Manager
+# Secure wallet management with address derivation and security features
+#
+# @author Rokhanz
+# @license MIT
+# @version 1.0.0
+
 # === INTERNAL ERROR HANDLING ===
 wallet_error_exit() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] WALLET ERROR: $*" >&2
