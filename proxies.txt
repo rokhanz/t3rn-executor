@@ -1,0 +1,81 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║                    T3RN EXECUTOR PROXY LIST                 ║
+# ║                  (Proxy Configuration Template)             ║
+# ╚══════════════════════════════════════════════════════════════╝
+
+# T3RN Executor Proxy Configuration
+# Add your proxy servers here (one per line)
+#
+# @author Rokhanz
+# @license MIT
+# @version 1.0.0
+
+# === PROXY FORMAT ===
+# Supported formats:
+# http://username:password@host:port
+# https://username:password@host:port
+# socks4://username:password@host:port
+# socks5://username:password@host:port
+
+# === EXAMPLE PROXIES ===
+# Remove the # to uncomment and add your actual proxy details
+
+# HTTP Proxies
+# http://user:pass@proxy1.example.com:8080
+# http://user:pass@proxy2.example.com:3128
+# http://proxy3.example.com:8080
+
+# HTTPS Proxies
+# https://user:pass@secure-proxy1.example.com:8080
+# https://user:pass@secure-proxy2.example.com:3128
+
+# SOCKS4 Proxies
+# socks4://user:pass@socks4-proxy1.example.com:1080
+# socks4://user:pass@socks4-proxy2.example.com:1080
+
+# SOCKS5 Proxies (Recommended for security)
+# socks5://user:pass@socks5-proxy1.example.com:1080
+# socks5://user:pass@socks5-proxy2.example.com:1080
+# socks5://user:pass@socks5-proxy3.example.com:1080
+
+# === CONFIGURATION NOTES ===
+# 1. Add one proxy per line
+# 2. Use the format: protocol://username:password@host:port
+# 3. Remove # to uncomment a line
+# 4. Test your proxies before adding them
+# 5. Use SOCKS5 for better security and performance
+# 6. Rotate proxies regularly for better anonymity
+# 7. Monitor proxy health and performance
+# 8. Keep backup proxies for failover
+
+# === SECURITY WARNINGS ===
+# - Never commit this file with real proxy credentials to git
+# - Keep proxy credentials secure
+# - Use strong authentication
+# - Monitor for unauthorized usage
+# - Regularly rotate proxy credentials
+
+# === PROXY PROVIDERS ===
+# Popular proxy providers (for reference):
+# - Bright Data (formerly Luminati)
+# - Oxylabs
+# - Smartproxy
+# - ProxyMesh
+# - Storm Proxies
+# - MyPrivateProxy
+# - HighProxies
+
+# === TESTING YOUR PROXIES ===
+# Test proxy connectivity:
+# curl --proxy "http://user:pass@proxy.com:8080" http://httpbin.org/ip
+# curl --proxy "socks5://user:pass@proxy.com:1080" http://httpbin.org/ip
+
+# === EXAMPLE WORKING PROXIES FOR TESTING ===
+# Free proxies for testing (not recommended for production):
+# http://free-proxy1.com:8080
+# http://free-proxy2.com:3128
+# Note: Free proxies are unreliable and may be insecure
+
+# === YOUR PROXIES ===
+# Add your actual proxy servers below:
+
