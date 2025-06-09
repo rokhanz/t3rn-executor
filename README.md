@@ -344,9 +344,8 @@ Check specific components
 ./modules/dependency_checker.sh
 ```
 
-```
 ## 📁 Project Structure
-
+```
 t3rn_executor/
 ├── 📄 autorun.sh # Main autorun script
 ├── 📄 main.sh # Core execution script
