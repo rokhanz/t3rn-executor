@@ -62,27 +62,27 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
-```
 Ubuntu/Debian
-sudo apt update && sudo apt install -y curl tar screen bc netcat-openbsd xxd
 ```
+sudo apt update && sudo apt install -y curl tar screen bc netcat-openbsd xxd
 ```
 Optional dependencies for wallet address derivation
 Option 1: Foundry (Recommended)
+```
 curl -L https://foundry.paradigm.xyz | bash
 source ~/.bashrc && foundryup
 ```
-```
 Option 2: Node.js + ethers
+```
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 npm install -g ethers
 ```
-```
 Option 3: Python3 + web3
+```
 sudo apt install -y python3 python3-pip
 pip3 install web3 eth-account
-
+```
 
 ### Installation
 
@@ -99,14 +99,13 @@ Copy environment template
 ```
 cp .env.example .env
 ```
-```
 Edit configuration
 ```
 nano .env
 ```
-```
-### Configuration
 
+### Configuration
+```
 Edit `.env` file with your settings:
 
 Essential Configuration
@@ -121,13 +120,11 @@ TELEGRAM_CHAT_ID="your_chat_id"
 
 Network Selection
 ENABLED_NETWORKS="arbitrum-sepolia,base-sepolia,blast-sepolia,optimism-sepolia"
-
 ```
-
 ### Running
-```
-```
+
 Quick start (recommended)
+```
 ./autorun.sh
 ```
 Run in specific mode
@@ -223,7 +220,6 @@ BALANCE_THRESHOLD_UNIT="0.5" # Unichain Sepolia
 RPC overrides (optional)
 RPC_ARBT_OVERRIDE="https://custom-arbitrum-rpc.com"
 RPC_BAST_OVERRIDE="https://custom-base-rpc.com"
-
 ```
 
 ### Proxy Configuration
@@ -271,7 +267,6 @@ logs/
 ├── mev_transactions.json # MEV detection logs
 ├── network_stats.json # Network statistics
 └── execution_summary.txt # Final execution report
-
 ```
 
 ## 🛡️ Security
@@ -346,6 +341,7 @@ Check specific components
 ./modules/validation.sh
 ./modules/dependency_checker.sh
 ```
+
 ```
 ## 📁 Project Structure
 
