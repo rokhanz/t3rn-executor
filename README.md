@@ -304,22 +304,23 @@ The executor includes advanced MEV protection:
 Download manually
 ```
 ./modules/downloader.sh latest
-
+```
 **2. RPC Connection Failed**
 Check network configuration
 ```
 ./autorun.sh -v
-
+```
 **3. Low Balance Warning**
 Check balances
 ```
 ./modules/balance_checker.sh
-
+```
 **4. Permission Denied**
 Fix permissions
 ```
 chmod +x .sh modules/.sh
 chmod 600 .env
+```
 
 ### Debug Mode
 ```
@@ -327,7 +328,7 @@ Enable debug logging
 export ENABLE_DEBUG_MODE=true
 export LOG_LEVEL=debug
 ./autorun.sh
-
+```
 ### Health Checks
 
 Run comprehensive health check
@@ -338,6 +339,7 @@ Check specific components
 ./modules/validation.sh
 ./modules/dependency_checker.sh
 
+```
 ```
 ## 📁 Project Structure
 
@@ -372,6 +374,7 @@ t3rn_executor/
 ├── 📄 executor.log # Main logs
 ├── 📄 balance_report.txt # Balance reports
 └── 📄 *.json # JSON logs
+```
 
 ## 🤝 Contributing
 
@@ -384,18 +387,20 @@ Contributions are welcome! Please follow these guidelines:
 5. **Open a Pull Request**
 
 ### Development Setup
-```
 Clone for development
+```
 git clone https://github.com/rokhanz/t3rn-executor.git
 cd t3rn-executor
-
+```
+```
 Install development dependencies
 ./modules/dependency_checker.sh --install-all
-
+```
+```
 Run tests
 ./autorun.sh --dry-run
-
 ```
+
 ## 🙏 Acknowledgments
 
 - **T3RN Team** - For the amazing T3RN protocol
