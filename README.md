@@ -346,37 +346,39 @@ Check specific components
 
 ## 📁 Project Structure
 ```
-t3rn_executor/
-├── 📄 autorun.sh # Main autorun script
-├── 📄 main.sh # Core execution script
-├── 📄 .env.example # Configuration template
-├── 📄 README.md # This file
-├── 📄 proxies.txt # Proxy configuration template
-├── 📄 .gitignore # Git ignore rules
-├── 📁 modules/ # Core modules
-│ ├── 📄 all_monitor.sh # Comprehensive monitoring
-│ ├── 📄 anti_mev.sh # MEV protection
-│ ├── 📄 balance_checker.sh # Balance monitoring
-│ ├── 📄 dependency_checker.sh # System dependencies
-│ ├── 📄 downloader.sh # Binary downloader
-│ ├── 📄 env_loader.sh # Environment loader
-│ ├── 📄 executor_binary.sh # Executor management
-│ ├── 📄 log_manager.sh # Log management
-│ ├── 📄 progress_*.sh # Progress indicators
-│ ├── 📄 proxy_manager.sh # Proxy management
-│ ├── 📄 rpc_manager.sh # RPC management
-│ ├── 📄 screen_manager.sh # Screen sessions
-│ ├── 📄 validation.sh # Configuration validation
-│ └── 📄 wallet_manager.sh # Wallet security
-├── 📁 config/ # Configuration files
-│ ├── 📄 network_code_map.conf # Network mappings
-│ └── 📄 network_mappings.conf # Network configuration
-├── 📁 anti_mev/ # MEV protection
-│ └── 📄 mev_detector.js # MEV detection service
-└── 📁 logs/ # Log files (auto-created)
-├── 📄 executor.log # Main logs
-├── 📄 balance_report.txt # Balance reports
-└── 📄 *.json # JSON logs
+t3rn-executor/
+├── 📄 autorun.sh                    # Main autorun script
+├── 📄 main.sh                       # Core execution script  
+├── 📄 .env.example                  # Configuration template
+├── 📄 proxies.txt                   # Proxy configuration template
+├── 📄 README.md                     # Documentation
+├── 📄 .gitignore                    # Git ignore rules
+├── 📁 modules/                      # Core modules (17 files)
+│   ├── 📄 all_monitor.sh            # Comprehensive monitoring
+│   ├── 📄 anti_mev.sh               # MEV protection
+│   ├── 📄 balance_checker.sh        # Balance monitoring
+│   ├── 📄 dependency_checker.sh     # System dependencies
+│   ├── 📄 downloader.sh             # Binary downloader
+│   ├── 📄 env_loader.sh             # Environment loader
+│   ├── 📄 executor_binary.sh        # Executor management
+│   ├── 📄 log_manager.sh            # Log management
+│   ├── 📄 progress_bar_batch.sh     # Batch progress
+│   ├── 📄 progress_bar_color.sh     # Colorful progress
+│   ├── 📄 progress_multitask.sh     # Multi-task progress
+│   ├── 📄 progress_spinner.sh       # Animated spinners
+│   ├── 📄 proxy_manager.sh          # Proxy management
+│   ├── 📄 rpc_manager.sh            # RPC management
+│   ├── 📄 screen_manager.sh         # Screen sessions
+│   ├── 📄 validation.sh             # Configuration validation
+│   └── 📄 wallet_manager.sh         # Wallet security
+├── 📁 config/                       # Configuration files
+│   ├── 📄 network_code_map.conf     # Network mappings
+│   └── 📄 network_mappings.conf     # Network configuration
+├── 📁 anti_mev/                     # MEV protection
+│   └── 📄 mev_detector.js           # MEV detection service
+└── 📁 logs/                         # Log files (auto-created)
+    └── 📄 .gitkeep                  # Keep directory in git
+
 ```
 
 ## 🤝 Contributing
