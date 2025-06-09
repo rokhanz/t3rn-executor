@@ -1,0 +1,10 @@
+# Keep this directory in git
+# This folder will contain daily report archives
+#
+# Files that will be created here:
+# - balance_report_YYYY-MM-DD.txt
+# - execution_report_YYYY-MM-DD.txt
+# - mev_report_YYYY-MM-DD.json
+# - network_report_YYYY-MM-DD.json
+#
+# Note: Daily reports are automatically ignored by .gitignore
