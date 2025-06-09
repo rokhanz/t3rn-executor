@@ -1,0 +1,38 @@
+{
+  "name": "t3rn-executor",
+  "version": "1.0.0",
+  "description": "Advanced T3RN Executor with comprehensive monitoring and MEV protection",
+  "main": "anti_mev/mev_detector.js",
+  "scripts": {
+    "start": "./autorun.sh",
+    "mev-detector": "node anti_mev/mev_detector.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rokhanz/t3rn-executor.git"
+  },
+  "keywords": [
+    "t3rn",
+    "executor",
+    "blockchain",
+    "mev-protection",
+    "telegram",
+    "monitoring"
+  ],
+  "author": "Rokhanz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rokhanz/t3rn-executor/issues"
+  },
+  "homepage": "https://github.com/rokhanz/t3rn-executor#readme",
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "optionalDependencies": {
+    "ethers": "^6.8.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
