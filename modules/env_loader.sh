@@ -29,30 +29,63 @@ env_log_warn() {
 
 # === INITIALIZE ENVIRONMENT LOADER ===
 initialize_env_loader() {
-  # Initialize SCRIPT_DIR first (safe with default)
+  # ✅ FIX: Initialize variables with safe defaults FIRST
   local script_dir="${SCRIPT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)}"
-  export SCRIPT_DIR="$script_dir"
-  
-  # Initialize LOGS_DIR based on SCRIPT_DIR (safe with default)
   local logs_dir="${LOGS_DIR:-$script_dir/logs}"
+  
+  # Export after safe initialization
+  export SCRIPT_DIR="$script_dir"
   export LOGS_DIR="$logs_dir"
   
-  # Now safe to create directory
+  # Now safe to create directory and use variables
   mkdir -p "$LOGS_DIR" || env_error_exit "Cannot create logs directory: $LOGS_DIR"
   
   env_log_info "🔧 Environment loader initialized"
 }
 
 # === ENVIRONMENT FILE PATHS ===
-ENV_FILE="$SCRIPT_DIR/.env"
-ENV_TEMPLATE="$SCRIPT_DIR/.env.example"
-ENV_BACKUP_DIR="$SCRIPT_DIR/.env_backups"
-ENV_VALIDATION_LOG="$LOGS_DIR/env_validation.log"
+# ✅ FIX: Initialize these AFTER initialize_env_loader is called
+get_env_paths() {
+  ENV_FILE="${SCRIPT_DIR}/.env"
+  ENV_TEMPLATE="${SCRIPT_DIR}/.env.example"
+  ENV_BACKUP_DIR="${SCRIPT_DIR}/.env_backups"
+  ENV_VALIDATION_LOG="${LOGS_DIR}/env_validation.log"
+}
+
+# === VALIDATE ENV FILE SYNTAX ===
+validate_env_syntax() {
+  local env_file="${1:-$ENV_FILE}"
+  
+  env_log_info "🔍 Validating .env file syntax: $env_file"
+  
+  if [[ ! -f "$env_file" ]]; then
+    env_log_warn "⚠️ Environment file not found: $env_file"
+    return 1
+  fi
+  
+  # Test syntax by sourcing in a subshell
+  if (source "$env_file") 2>/dev/null; then
+    env_log_info "✅ .env file syntax is valid"
+    return 0
+  else
+    env_log_warn "❌ .env file has syntax errors"
+    return 1
+  fi
+}
 
 # === LOAD ENVIRONMENT ===
 load_environment() {
-  local env_file="${1:-$ENV_FILE}"
+  local env_file="${1:-}"
   local validate="${2:-true}"
+  
+  # Initialize first to set up variables
+  initialize_env_loader
+  
+  # Set up file paths after initialization
+  get_env_paths
+  
+  # Use provided env_file or default
+  env_file="${env_file:-$ENV_FILE}"
   
   env_log_info "🔧 Loading environment from: $env_file"
   
@@ -78,11 +111,9 @@ load_environment() {
   fi
   
   # Set derived variables (safe with defaults)
-  export SCRIPT_DIR="${SCRIPT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)}"
   export T3RN_DIR="${T3RN_DIR:-$SCRIPT_DIR/t3rn}"
   export EXECUTOR_PATH="${EXECUTOR_PATH:-$T3RN_DIR/executor/executor/bin/executor}"
   export MODULES_DIR="${MODULES_DIR:-$SCRIPT_DIR/modules}"
-  export LOGS_DIR="${LOGS_DIR:-$SCRIPT_DIR/logs}"
   
   # Parse enabled networks into array
   IFS=',' read -ra ENABLED_NETWORKS_ARRAY <<< "${ENABLED_NETWORKS:-}"
@@ -99,35 +130,11 @@ load_environment() {
   return 0
 }
 
-# === VALIDATE ENV FILE SYNTAX ===
-validate_env_syntax() {
-  local env_file="${1:-$ENV_FILE}"
-  
-  env_log_info "🔍 Validating .env file syntax: $env_file"
-  
-  if [[ ! -f "$env_file" ]]; then
-    env_log_warn "⚠️ Environment file not found: $env_file"
-    return 1
-  fi
-  
-  # Test syntax by sourcing in a subshell
-  if (source "$env_file") 2>/dev/null; then
-    env_log_info "✅ .env file syntax is valid"
-    return 0
-  else
-    env_log_warn "❌ .env file has syntax errors"
-    return 1
-  fi
-}
-
 # === VALIDATE REQUIRED VARIABLES ===
 validate_required_variables() {
   local env_file="${1:-$ENV_FILE}"
   
   env_log_info "🔍 Validating required environment variables..."
-  
-  # Source the env file
-  source "$env_file" || env_error_exit "Failed to source .env file"
   
   # Define required variables
   local required_vars=(
@@ -190,8 +197,6 @@ validate_optional_variables() {
   
   env_log_info "🔍 Validating optional environment variables..."
   
-  source "$env_file" || return 1
-  
   local warnings=()
   
   # Check Telegram configuration
@@ -210,7 +215,7 @@ validate_optional_variables() {
   local valid_alchemy_keys=0
   
   for key in "${alchemy_keys[@]}"; do
-    if [[ -n "$key" && "$key" != "your_alchemy_api_key" ]]; then
+    if [[ -n "$key" && "$key" != "your_alchemy_api_key" && "$key" != "your_first_alchemy_api_key" ]]; then
       ((valid_alchemy_keys++))
     fi
   done
@@ -239,6 +244,12 @@ validate_optional_variables() {
 
 # === GET ENV STATUS ===
 get_env_status() {
+  # Initialize if not already done
+  if [[ -z "${ENV_FILE:-}" ]]; then
+    initialize_env_loader
+    get_env_paths
+  fi
+  
   if [[ -f "$ENV_FILE" ]]; then
     if validate_env_syntax "$ENV_FILE" >/dev/null 2>&1; then
       echo "LOADED: $(wc -l < "$ENV_FILE") lines"
@@ -253,6 +264,12 @@ get_env_status() {
 # === VALIDATE ENV CONFIGURATION ===
 validate_env_configuration() {
   env_log_info "🔍 Validating complete environment configuration..."
+  
+  # Initialize if not already done
+  if [[ -z "${ENV_FILE:-}" ]]; then
+    initialize_env_loader
+    get_env_paths
+  fi
   
   local validation_passed=true
   
@@ -284,8 +301,8 @@ validate_env_configuration() {
   fi
 }
 
-# Initialize on load
-initialize_env_loader
+# ✅ FIX: Don't initialize on load, let functions call it when needed
+# initialize_env_loader  # REMOVED - causes the unbound variable error
 
 # Export functions
 export -f initialize_env_loader
@@ -295,3 +312,4 @@ export -f validate_optional_variables
 export -f load_environment
 export -f get_env_status
 export -f validate_env_configuration
+export -f get_env_paths
