@@ -257,7 +257,7 @@ Rich notifications include:
 - ⚠️ **Error Alerts** - Critical error notifications
 
 ### Log Files
-
+```
 logs/
 ├── executor.log # Main executor logs
 ├── autorun.log # Autorun script logs
@@ -352,6 +352,7 @@ t3rn_executor/
 ├── 📄 main.sh # Core execution script
 ├── 📄 .env.example # Configuration template
 ├── 📄 README.md # This file
+├── 📄 proxies.txt # Proxy configuration template
 ├── 📄 .gitignore # Git ignore rules
 ├── 📁 modules/ # Core modules
 │ ├── 📄 all_monitor.sh # Comprehensive monitoring
